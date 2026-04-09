@@ -707,6 +707,25 @@ nav.scrolled {
   .hero-meta { flex-direction: column; align-items: flex-start; gap: 10px; }
   .nav-links { gap: 12px; }
 }
+
+/* Mobile legibility — bump dim DM Mono text to readable levels */
+@media (max-width: 768px) {
+  :root {
+    --dim: rgba(242,237,230,0.65);
+    --dimmer: rgba(242,237,230,0.45);
+  }
+  .fb { color: rgba(242,237,230,0.5); }
+  .fb.on { color: var(--white); }
+  .card-client { color: rgba(242,237,230,0.6); }
+  .card-roles { color: rgba(242,237,230,0.8); }
+  .pos-stat-lbl { color: var(--ac); }
+  .pos-stat-val { color: var(--white); }
+  .nav-links a { color: rgba(242,237,230,0.6); }
+  .hero-tagline { color: rgba(242,237,230,0.7); }
+  .key-lbl { color: rgba(242,237,230,0.5); }
+  .aff-link { color: rgba(242,237,230,0.55); }
+  .lb-btn { color: rgba(242,237,230,0.6); }
+}
 </style>
 </head>
 <body>
