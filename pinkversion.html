@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gregg Jaffe — Director & Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ac:#FF1FCC;
+  --bg:#0c0c0c;
+  --fg:#f0ece4;
+  --fg2:#c8c4be;
+  --fg3:rgba(240,236,228,0.32);
+  --fg4:rgba(240,236,228,0.1);
+  --line:rgba(240,236,228,0.07);
+  --card:#111;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Rubik',sans-serif;font-weight:300;overflow-x:hidden;min-height:100vh}
+a{text-decoration:none;color:inherit}
+#grain{position:fixed;inset:0;pointer-events:none;z-index:998;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 48px;
+  background:rgba(12,12,12,0.9);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-name{
+  font-family:'Anton',sans-serif;font-size:22px;
+  letter-spacing:0.06em;color:var(--fg);cursor:pointer;
+  transition:opacity 0.15s;
+}
+.nav-name:hover{opacity:0.7}
+.nav-name span{color:var(--ac)}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{
+  font-size:11px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--fg3);
+  cursor:pointer;transition:color 0.15s;padding-bottom:3px;
+}
+.nav-links a:hover{color:var(--fg)}
+.nav-links a.on{color:var(--fg);border-bottom:1.5px solid var(--ac)}
+.nav-links a.ac{color:var(--ac)}
+.nav-links a.ac:hover{color:var(--fg)}
+
+/* ── PAGES ── */
+.page{display:none;padding-top:61px;min-height:100vh}
+.page.active{display:block}
+
+/* ══════════════════════════════════
+   WORK PAGE (homepage)
+══════════════════════════════════ */
+.work-intro{
+  padding:40px 48px 32px;
+  border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.work-ghost{
+  position:absolute;top:-10px;right:-10px;
+  font-family:'Anton',sans-serif;
+  font-size:clamp(120px,20vw,240px);
+  line-height:0.85;letter-spacing:0.02em;
+  color:rgba(255,31,204,0.04);
+  pointer-events:none;user-select:none;
+}
+.work-kicker{
+  font-size:11px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:16px;
+}
+.work-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(36px,5vw,64px);
+  line-height:0.95;letter-spacing:0.02em;
+  color:var(--fg);margin-bottom:16px;
+  position:relative;z-index:1;
+}
+.work-sub{
+  font-size:13px;line-height:1.6;
+  color:var(--fg2);max-width:560px;
+  position:relative;z-index:1;
+}
+
+/* ROLE CTA BLOCKS */
+.role-ctas{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3px;border-bottom:1px solid var(--line);
+}
+.role-cta{
+  background:#111;padding:24px 48px;
+  cursor:pointer;transition:background 0.2s;
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:72px;position:relative;
+}
+.role-cta:hover{background:#161616}
+.role-cta-label{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:10px;
+}
+.role-cta-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(18px,2vw,26px);
+  line-height:1;letter-spacing:0.02em;
+  color:var(--fg);
+}
+.role-cta-arrow{
+  position:absolute;bottom:32px;right:40px;
+  color:var(--fg3);transition:color 0.2s,transform 0.2s;
+}
+.role-cta-arrow svg{width:22px;height:22px}
+.role-cta:hover .role-cta-arrow{color:var(--ac);transform:translateX(4px)}
+
+/* FILTER BAR */
+.fbar{
+  display:flex;align-items:center;flex-wrap:wrap;gap:0;
+  padding:0 48px;
+  border-bottom:1px solid var(--line);
+  position:sticky;top:61px;z-index:50;
+  background:rgba(12,12,12,0.95);
+  backdrop-filter:blur(8px);
+}
+.fg-grp{display:flex;flex-wrap:wrap}
+.fdiv{
+  width:1px;height:14px;
+  background:rgba(240,236,228,0.12);
+  margin:0 12px;align-self:center;
+}
+.fb{
+  background:none;border:none;
+  font-family:'Rubik',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--fg3);cursor:pointer;
+  padding:8px 12px 12px;
+  position:relative;transition:color 0.15s;
+}
+.fb:hover{color:rgba(240,236,228,0.65)}
+.fb.on{color:var(--fg)}
+.fb.on::after{
+  content:'';position:absolute;
+  bottom:-1px;left:12px;right:12px;
+  height:1.5px;background:var(--ac);
+}
+
+/* GRID */
+.grid-wrap{padding:3px 3px 80px}
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:3px;
+}
+.card{
+  position:relative;overflow:hidden;
+  cursor:pointer;background:var(--card);
+  aspect-ratio:16/9;
+}
+.card-sm{grid-column:span 4}
+.card-md{grid-column:span 4}
+.card-lg{grid-column:span 4}
+.card-xl{grid-column:span 4}
+
+.card img{
+  width:100%;height:100%;object-fit:cover;
+  opacity:0.48;display:block;
+  transition:opacity 0.35s,transform 0.5s;
+}
+.card-ph{
+  width:100%;height:100%;
+  background:#161616;
+  display:flex;align-items:center;justify-content:center;
+}
+.card-ph span{
+  font-size:10px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(240,236,228,0.12);
+}
+.card:hover img{opacity:0.88;transform:scale(1.03)}
+.cov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,10,10,0.97) 0%,rgba(10,10,10,0.1) 60%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:18px;opacity:0;transition:opacity 0.2s;
+}
+.card:hover .cov{opacity:1}
+.ctag{
+  font-size:9px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;padding:3px 8px;
+  background:var(--ac);color:#0c0c0c;
+  display:inline-block;margin-bottom:8px;width:fit-content;
+}
+.ctag.edit-tag{background:var(--fg);color:#0c0c0c}
+.ctitle{
+  font-family:'Anton',sans-serif;
+  font-size:16px;letter-spacing:0.03em;
+  color:var(--fg);line-height:1.05;
+}
+.card-lg .ctitle,.card-xl .ctitle{font-size:22px}
+.cclient{font-size:11px;font-weight:400;color:rgba(240,236,228,0.4);margin-top:4px}
+.alw{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:8px 12px;
+  background:linear-gradient(to top,rgba(10,10,10,0.85),transparent);
+}
+.atit{
+  font-family:'Anton',sans-serif;font-size:11px;
+  letter-spacing:0.03em;color:rgba(240,236,228,0.3);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.pico{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:50px;height:50px;
+  border:1.5px solid rgba(240,236,228,0.15);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.2s,border-color 0.2s;
+}
+.card:hover .pico{opacity:1;border-color:var(--ac)}
+.pico svg{width:14px;height:14px;fill:var(--fg);margin-left:3px}
+.share-btn{
+  position:absolute;top:12px;right:12px;
+  background:rgba(12,12,12,0.8);border:1px solid rgba(240,236,228,0.15);
+  color:var(--fg3);font-family:'Rubik',sans-serif;
+  font-size:9px;font-weight:500;letter-spacing:0.08em;
+  text-transform:uppercase;padding:5px 8px;
+  cursor:pointer;opacity:0;transition:opacity 0.2s,color 0.15s;
+  z-index:2;
+}
+.card:hover .share-btn{opacity:1}
+.share-btn:hover{color:var(--ac);border-color:var(--ac)}
+.share-toast{
+  position:fixed;bottom:32px;left:50%;transform:translateX(-50%);
+  background:var(--fg);color:#0c0c0c;
+  font-size:11px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;padding:12px 24px;
+  opacity:0;transition:opacity 0.2s;pointer-events:none;z-index:2000;
+}
+.share-toast.show{opacity:1}
+
+/* ══════════════════════════════════
+   DIRECTOR / EDITOR POSITIONING PAGES
+══════════════════════════════════ */
+.pos-hero{
+  position:relative;
+  padding:80px 48px 72px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  align-items:center;
+  min-height:420px;
+}
+.pos-hero-img{
+  position:relative;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:#161616;
+}
+.pos-hero-img img{
+  width:100%;height:100%;
+  object-fit:cover;opacity:0.7;
+  display:block;
+}
+.pos-hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(12,12,12,0.4) 0%,transparent 100%);
+}
+.pos-img-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:10px;
+  background:#141414;
+}
+.pos-img-placeholder-txt{
+  font-size:9px;font-weight:500;letter-spacing:0.16em;
+  text-transform:uppercase;color:rgba(240,236,228,0.15);
+}
+.pos-ghost{
+  position:absolute;bottom:-20px;left:-10px;
+  font-family:'Anton',sans-serif;
+  font-size:clamp(100px,16vw,200px);
+  line-height:0.85;letter-spacing:0.02em;
+  color:rgba(255,31,204,0.05);
+  pointer-events:none;user-select:none;
+}
+.pos-content{position:relative;z-index:1}
+.pos-kicker{
+  font-size:11px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:16px;
+}
+.pos-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(56px,8vw,100px);
+  line-height:0.87;letter-spacing:0.02em;
+  color:var(--fg);margin-bottom:24px;
+}
+.pos-phil{
+  font-size:15px;line-height:1.85;
+  color:var(--fg2);margin-bottom:28px;
+}
+.pos-phil strong{color:var(--fg);font-weight:500}
+.pos-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--ac);
+  cursor:pointer;transition:gap 0.2s;border:none;background:none;
+  font-family:'Rubik',sans-serif;
+}
+.pos-cta:hover{gap:16px}
+.pos-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
+
+/* KEY SAMPLES */
+.key-samples{padding:40px 48px 0;border-bottom:1px solid var(--line)}
+.ks-label{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--fg3);margin-bottom:20px;
+}
+.ks-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:3px;margin-bottom:3px;
+}
+
+/* ══════════════════════════════════
+   LIGHTBOX
+══════════════════════════════════ */
+.lb{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(6,6,6,0.97);
+  align-items:center;justify-content:center;padding:28px;
+}
+.lb.open{display:flex}
+.lb-inner{width:100%;max-width:940px}
+.lb-vid{
+  position:relative;width:100%;aspect-ratio:16/9;
+  background:#0a0a0a;margin-bottom:24px;
+}
+.lb-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.lb-ph{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.lb-ph-txt{
+  font-size:11px;font-weight:400;color:var(--fg3);
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+.lb-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:28px}
+.lb-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(22px,3.5vw,36px);
+  letter-spacing:0.03em;color:var(--fg);
+  line-height:1;margin-bottom:6px;
+}
+.lb-client{
+  font-size:11px;font-weight:500;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:10px;
+}
+.lb-role-tags{display:flex;gap:6px;margin-bottom:12px}
+.lb-role-tag{
+  font-size:9px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;padding:3px 8px;
+}
+.lb-role-tag.dir{background:var(--ac);color:#0c0c0c}
+.lb-role-tag.edit{background:var(--fg);color:#0c0c0c}
+.lb-role-tag.cat{background:var(--fg4);color:var(--fg2)}
+.lb-desc{font-size:14px;line-height:1.8;color:var(--fg2);max-width:580px;font-weight:300}
+.lb-nav{display:flex;gap:8px;align-items:center;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.lb-btn{
+  background:none;border:1px solid var(--fg4);
+  color:var(--fg3);font-family:'Rubik',sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;padding:10px 18px;
+  cursor:pointer;transition:all 0.15s;
+}
+.lb-btn:hover{border-color:var(--fg);color:var(--fg)}
+.lb-close{
+  background:none;border:none;color:var(--fg3);
+  font-family:'Rubik',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;padding:10px 0;transition:color 0.15s;
+}
+.lb-close:hover{color:var(--fg)}
+.lb-share{
+  background:none;border:1px solid var(--ac);
+  color:var(--ac);font-family:'Rubik',sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;padding:10px 18px;
+  cursor:pointer;transition:all 0.15s;
+}
+.lb-share:hover{background:var(--ac);color:#0c0c0c}
+
+/* ══════════════════════════════════
+   ABOUT
+══════════════════════════════════ */
+.about-hero{
+  padding:80px 48px 72px;
+  border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.about-ghost{
+  position:absolute;top:-10px;right:-10px;
+  font-family:'Anton',sans-serif;
+  font-size:clamp(100px,16vw,200px);
+  line-height:0.85;letter-spacing:0.02em;
+  color:rgba(255,31,204,0.04);
+  pointer-events:none;user-select:none;
+}
+.about-kicker{
+  font-size:11px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:18px;
+}
+.about-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(48px,7vw,88px);
+  line-height:0.88;letter-spacing:0.02em;
+  color:var(--fg);position:relative;z-index:1;
+}
+
+/* BTS */
+.bts-wrap{
+  position:relative;width:100%;height:420px;overflow:hidden;
+  background:#111;
+  /* REPLACE: background-image:url('your-bts-photo.jpg') */
+  background-size:cover;background-position:center top;
+}
+.bts-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(12,12,12,0.2) 0%,rgba(12,12,12,0.65) 100%);
+}
+.bts-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:12px;
+}
+.bts-placeholder-icon{
+  font-family:'Anton',sans-serif;font-size:72px;
+  color:rgba(240,236,228,0.05);letter-spacing:0.04em;
+}
+.bts-placeholder-txt{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(240,236,228,0.18);
+}
+.bts-label{
+  position:absolute;bottom:28px;left:48px;z-index:1;
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(240,236,228,0.38);
+}
+
+/* ABOUT COLS */
+.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.about-col{background:#111;padding:52px 48px}
+.col-label{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:18px;
+}
+.col-head{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(32px,4vw,48px);
+  letter-spacing:0.02em;color:var(--fg);
+  line-height:0.92;margin-bottom:22px;
+}
+.about-col p{font-size:14px;line-height:1.85;color:var(--fg2);margin-bottom:14px;font-weight:300}
+.about-col p:last-child{margin-bottom:0}
+
+/* BIO */
+.about-bio{
+  padding:72px 48px;
+  border-top:2px solid var(--ac);
+  position:relative;overflow:hidden;
+}
+.bio-ghost{
+  position:absolute;bottom:-30px;right:-10px;
+  font-family:'Anton',sans-serif;
+  font-size:clamp(80px,14vw,180px);
+  line-height:0.85;
+  color:rgba(255,31,204,0.04);
+  pointer-events:none;user-select:none;
+}
+.bio-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(40px,6vw,72px);
+  line-height:0.88;letter-spacing:0.02em;
+  color:var(--fg);margin-bottom:40px;
+  position:relative;z-index:1;
+}
+.bio-body{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;margin-bottom:48px;
+  position:relative;z-index:1;
+}
+.bio-body p{font-size:15px;line-height:1.85;color:var(--fg2);margin-bottom:16px;font-weight:300}
+.bio-body p:last-child{margin-bottom:0}
+
+/* AFFILIATIONS */
+.affiliations{
+  padding:64px 48px;
+  border-top:1px solid var(--line);
+}
+.aff-label{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--fg3);margin-bottom:36px;
+}
+.aff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.aff-item{
+  background:#111;padding:36px 32px;
+  transition:background 0.2s;
+}
+.aff-item:hover{background:#161616}
+.aff-name{
+  font-family:'Anton',sans-serif;
+  font-size:22px;letter-spacing:0.03em;
+  color:var(--fg);margin-bottom:10px;line-height:1;
+}
+.aff-role{
+  font-size:11px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:12px;
+}
+.aff-desc{font-size:13px;line-height:1.75;color:var(--fg2);font-weight:300;margin-bottom:16px}
+.aff-link{
+  font-size:10px;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--fg3);
+  display:inline-flex;align-items:center;gap:6px;
+  transition:color 0.15s;
+}
+.aff-link:hover{color:var(--ac)}
+.aff-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.5}
+
+.cta-btn{
+  display:inline-block;
+  font-size:11px;font-weight:600;letter-spacing:0.18em;
+  text-transform:uppercase;color:#0c0c0c;
+  background:var(--ac);padding:15px 36px;
+  cursor:pointer;transition:background 0.15s;
+  position:relative;z-index:1;
+}
+.cta-btn:hover{background:var(--fg)}
+
+/* ══════════════════════════════════
+   PITCH PAGES
+══════════════════════════════════ */
+.pitch-wrap{padding:72px 48px 80px;max-width:900px}
+.pitch-label{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:16px;
+}
+.pitch-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(48px,7vw,84px);
+  line-height:0.88;letter-spacing:0.02em;
+  color:var(--fg);margin-bottom:24px;
+}
+.pitch-copy{font-size:16px;line-height:1.85;color:var(--fg2);margin-bottom:52px;max-width:640px}
+.pitch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:3px}
+
+/* ══════════════════════════════════
+   ADMIN
+══════════════════════════════════ */
+.admin-wrap{padding:72px 48px;max-width:760px}
+.admin-title{
+  font-family:'Anton',sans-serif;font-size:48px;
+  letter-spacing:0.03em;color:var(--fg);margin-bottom:8px;
+}
+.admin-sub{font-size:13px;color:var(--fg3);margin-bottom:40px;letter-spacing:0.04em}
+.admin-form{display:flex;flex-direction:column;gap:20px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{
+  font-size:10px;font-weight:500;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--fg3);
+}
+.form-input,.form-textarea{
+  background:#141414;border:1px solid var(--line);
+  color:var(--fg);font-family:'Rubik',sans-serif;
+  font-size:14px;font-weight:300;padding:12px 16px;
+  outline:none;transition:border-color 0.15s;width:100%;
+}
+.form-input:focus,.form-textarea:focus{border-color:var(--ac)}
+.form-textarea{min-height:100px;resize:vertical}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--fg3)}
+.sample-checkboxes{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  max-height:320px;overflow-y:auto;
+  padding:4px;
+}
+.sample-cb{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;background:#141414;
+  border:1px solid var(--line);cursor:pointer;
+  transition:border-color 0.15s;
+}
+.sample-cb:hover{border-color:var(--fg3)}
+.sample-cb input{accent-color:var(--ac);width:14px;height:14px;cursor:pointer}
+.sample-cb-title{font-size:12px;font-weight:400;color:var(--fg2)}
+.sample-cb-meta{font-size:10px;color:var(--fg3);margin-top:2px}
+.form-actions{display:flex;gap:12px;margin-top:8px}
+.btn-primary{
+  background:var(--ac);color:#0c0c0c;
+  font-family:'Rubik',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:13px 28px;border:none;cursor:pointer;transition:background 0.15s;
+}
+.btn-primary:hover{background:var(--fg)}
+.btn-secondary{
+  background:none;border:1px solid var(--fg3);color:var(--fg2);
+  font-family:'Rubik',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:13px 28px;cursor:pointer;transition:all 0.15s;
+}
+.btn-secondary:hover{border-color:var(--fg);color:var(--fg)}
+.admin-output{
+  margin-top:32px;padding:24px;
+  background:#141414;border:1px solid var(--line);
+  display:none;
+}
+.admin-output.show{display:block}
+.output-label{
+  font-size:10px;font-weight:500;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:12px;
+}
+.output-url{
+  font-size:13px;color:var(--fg);
+  background:#0a0a0a;padding:12px 16px;
+  border:1px solid var(--line);margin-bottom:16px;
+  word-break:break-all;font-family:monospace;
+}
+.output-json{
+  font-size:11px;color:var(--fg2);font-family:monospace;
+  background:#0a0a0a;padding:12px 16px;
+  border:1px solid var(--line);
+  max-height:200px;overflow-y:auto;
+  white-space:pre-wrap;word-break:break-all;
+  margin-bottom:16px;
+}
+.output-instructions{
+  font-size:13px;line-height:1.75;color:var(--fg2);font-weight:300;
+}
+.output-instructions strong{color:var(--fg);font-weight:500}
+.output-instructions code{
+  background:#0a0a0a;padding:2px 6px;
+  font-size:11px;color:var(--ac);font-family:monospace;
+}
+.admin-pitch-list{margin-top:48px;border-top:1px solid var(--line);padding-top:32px}
+.admin-pitch-list h3{
+  font-family:'Anton',sans-serif;font-size:24px;
+  letter-spacing:0.03em;color:var(--fg);margin-bottom:20px;
+}
+.pitch-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;background:#141414;
+  border:1px solid var(--line);margin-bottom:3px;
+}
+.pitch-item-title{font-size:13px;font-weight:500;color:var(--fg)}
+.pitch-item-url{font-size:11px;color:var(--ac);font-family:monospace}
+.pitch-item-del{
+  background:none;border:none;color:var(--fg3);
+  font-family:'Rubik',sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;padding:6px 10px;transition:color 0.15s;
+}
+.pitch-item-del:hover{color:#ff4444}
+.admin-login{
+  max-width:400px;margin:0 auto;
+  padding:80px 0;display:flex;flex-direction:column;gap:16px;align-items:center;
+}
+.admin-login-title{
+  font-family:'Anton',sans-serif;font-size:32px;
+  letter-spacing:0.04em;color:var(--fg);margin-bottom:8px;
+}
+.admin-login p{font-size:13px;color:var(--fg3);margin-bottom:16px}
+
+/* ══════════════════════════════════
+   EMPTY / UTILS
+══════════════════════════════════ */
+.empty{
+  grid-column:1/-1;
+  padding:80px;text-align:center;
+  color:var(--fg3);font-size:12px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .work-intro,.about-hero,.about-bio,.affiliations,
+  .pos-hero,.key-samples,.pitch-wrap,.admin-wrap{padding-left:24px;padding-right:24px}
+  .fbar{padding-left:24px;padding-right:24px}
+  .grid-wrap{padding:2px 2px 60px}
+  .about-cols,.aff-grid{grid-template-columns:1fr}
+  .about-col{padding:36px 24px}
+  .bio-body{grid-template-columns:1fr;gap:0}
+  .pos-hero{grid-template-columns:1fr;padding-top:48px}
+  .pos-hero-img{display:none}
+  .card-sm{grid-column:span 6}
+  .card-md{grid-column:span 6}
+  .card-lg{grid-column:span 6}
+  .ks-grid{grid-template-columns:1fr 1fr}
+  .lb{padding:16px}
+  .lb-meta{flex-direction:column}
+  .sample-checkboxes{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .card-sm,.card-md{grid-column:span 12}
+  .ks-grid{grid-template-columns:1fr}
+  .nav-links{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="grain"></canvas>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-name" onclick="goTo('work')">Gregg <span>Jaffe</span></div>
+  <ul class="nav-links">
+    <li><a id="nav-work" onclick="goTo('work')">Work</a></li>
+    <li><a id="nav-director" onclick="goTo('director')">Director</a></li>
+    <li><a id="nav-editor" onclick="goTo('editor')">Editor</a></li>
+    <li><a id="nav-about" onclick="goTo('about')">About</a></li>
+    <li><a class="ac" href="/cdn-cgi/l/email-protection#1b7c697e7c7c5b79727c6f7e7e6f73356f6d">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════ WORK -->
+<div class="page" id="work">
+  <div class="work-intro">
+    <div class="work-ghost">WORK</div>
+    <div class="work-kicker">Chicago, IL</div>
+    <div class="work-title">Gregg Jaffe.<br>Director & Editor.</div>
+    <p class="work-sub">20+ years telling stories on screen. Browse everything below or use the filters to find what you need.</p>
+  </div>
+
+  <!-- Director / Editor CTA blocks -->
+  <div class="role-ctas">
+    <div class="role-cta" onclick="goTo('director')">
+      <div class="role-cta-label">Hiring a director?</div>
+      <div class="role-cta-title">See directing work →</div>
+    </div>
+    <div class="role-cta" onclick="goTo('editor')">
+      <div class="role-cta-label">Need an editor?</div>
+      <div class="role-cta-title">See editing work →</div>
+    </div>
+  </div>
+
+  <div class="fbar">
+    <div class="fg-grp" id="role-filters">
+      <button class="fb on" onclick="setFilter('role','all',this)">All</button>
+      <button class="fb" onclick="setFilter('role','director',this)">Director</button>
+      <button class="fb" onclick="setFilter('role','editor',this)">Editor</button>
+    </div>
+    <div class="fdiv"></div>
+    <div class="fg-grp" id="cat-filters">
+      <button class="fb on" onclick="setFilter('cat','all',this)">All</button>
+      <button class="fb" onclick="setFilter('cat','brand',this)">Brand</button>
+      <button class="fb" onclick="setFilter('cat','film',this)">Film</button>
+      <button class="fb" onclick="setFilter('cat','comedy',this)">Comedy</button>
+      <button class="fb" onclick="setFilter('cat','commercial',this)">Commercial</button>
+    </div>
+  </div>
+  <div class="grid-wrap"><div class="work-grid" id="work-grid"></div></div>
+</div>
+
+<!-- ══════════════════════════════════════════ DIRECTOR -->
+<div class="page" id="director">
+  <div class="pos-hero">
+    <div class="pos-ghost">DIR</div>
+    <div class="pos-content">
+      <div class="pos-kicker">Director</div>
+      <div class="pos-title">Character<br>first.</div>
+      <p class="pos-phil">My style is focused on <strong>character and story</strong>. I love working with performers to find the best nuggets — always a push and pull between what's on the page and what someone brings to the role. Happy set = good work. No house style — whatever genre, pacing, or medium the story demands.</p>
+      <button class="pos-cta" onclick="goTo('work');setFilter('role','director',document.querySelector('#role-filters .fb:nth-child(2)'))">
+        See all directing work
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="pos-hero-img">
+      <!-- REPLACE: add src to img below with your best directing still or BTS frame -->
+      <img id="dir-hero-img" src="https://i.vimeocdn.com/video/1795216473-e437e9a3089198d26f8d172ee26a81de1bf087511a1a6c35d086f141ebc9fb7a-d_1920x1080" alt="Directing">
+    </div>
+  </div>
+  <div class="key-samples">
+    <div class="ks-label">Selected directing work</div>
+    <div class="ks-grid work-grid" id="dir-key-grid"></div>
+  </div>
+  <div style="height:60px"></div>
+</div>
+
+<!-- ══════════════════════════════════════════ EDITOR -->
+<div class="page" id="editor">
+  <div class="pos-hero">
+    <div class="pos-ghost">EDIT</div>
+    <div class="pos-content">
+      <div class="pos-kicker">Editor</div>
+      <div class="pos-title">Art and<br>science.</div>
+      <p class="pos-phil">Editing is where you make the choices that <strong>bring a story to life</strong>. Knowing your tools cold means you focus on the "why" instead of the "how." I've cut spots, docs, short films, music videos, and campaigns. The throughline: finding the cut that feels inevitable in retrospect.</p>
+      <button class="pos-cta" onclick="goTo('work');setFilter('role','editor',document.querySelector('#role-filters .fb:nth-child(3)'))">
+        See all editing work
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="pos-hero-img">
+      <!-- REPLACE: add src to img below with your best edit still or edit suite BTS -->
+      <img id="edit-hero-img" src="https://i.vimeocdn.com/video/811699740-6ac10ebf0e3e60ac9a1108b07a5ecb86e5fdefc4d263a65b0b9e6bc05b042dc7-d" alt="Editing">
+    </div>
+  </div>
+  <div class="key-samples">
+    <div class="ks-label">Selected editing work</div>
+    <div class="ks-grid work-grid" id="edit-key-grid"></div>
+  </div>
+  <div style="height:60px"></div>
+</div>
+
+<!-- ══════════════════════════════════════════ ABOUT -->
+<div class="page" id="about">
+  <div class="about-hero">
+    <div class="about-ghost">GREGG</div>
+    <div class="about-kicker">About</div>
+    <div class="about-title">Problem solver.<br>Storyteller.<br>Dog petter.</div>
+  </div>
+
+  <div class="bts-wrap" id="bts-wrap">
+    <!-- REPLACE: add style="background-image:url('your-bts-photo.jpg')" to .bts-wrap element above -->
+    <div class="bts-placeholder">
+      <div class="bts-placeholder-icon">BTS</div>
+      <div class="bts-placeholder-txt">Replace with on-set photo</div>
+    </div>
+    <div class="bts-label">On set — Chicago</div>
+  </div>
+
+  <div class="about-cols">
+    <div class="about-col">
+      <div class="col-label">As a director</div>
+      <div class="col-head">Character<br>first.</div>
+      <p>My directing style is focused on character and story. I love working with performers to find the best nuggets — always a push and pull between what's on the page and what someone brings to the role.</p>
+      <p>Happy set = good work. If people feel trusted to do their job, they usually do it well. And the work shows it.</p>
+      <p>No house style. Whatever genre, pacing, or medium the story demands — short film, spot, doc — it doesn't matter.</p>
+    </div>
+    <div class="about-col">
+      <div class="col-label">As an editor</div>
+      <div class="col-head">Art and<br>science.</div>
+      <p>Editing is where you make the interesting choices that really bring a story to life. Knowing your tools cold means you focus on the "why" instead of the "how."</p>
+      <p>I've cut brand spots, feature doc teasers, short films, music videos, and social campaigns. The throughline: finding the cut that feels inevitable in retrospect.</p>
+      <p>Range matters. Big brands, agencies, nonprofits, startups — always looking for what matters most to the audience.</p>
+    </div>
+  </div>
+
+  <div class="about-bio">
+    <div class="bio-ghost">20+</div>
+    <div class="bio-title">20+ years.<br>Still having fun.</div>
+    <div class="bio-body">
+      <div>
+        <p>I've been a writer slash director slash editor slash a lot of other things for many years. I mostly work in video, but I've dabbled in other forms. Dabbled with the best of 'em.</p>
+        <p>Like many a Chicago dweller, I found my footing in short-form storytelling through sketch comedy and improv. After realizing I was no good at corporate lackey-ness, I parlayed that into co-owning Big Teeth Productions.</p>
+      </div>
+      <div>
+        <p>I've been around long enough to know you need a creative vision — but you also need to know how to adapt. My goal is to get as close to that vision as possible while skiing around the moguls of opinion, fact, and schedule changes.</p>
+        <p>If all that has intrigued you enough to want to know more, or better yet hire me — good for me, and better for you.</p>
+      </div>
+    </div>
+    <a class="cta-btn" href="/cdn-cgi/l/email-protection#84e3f6e1e3e3c4e6ede3f0e1e1f0ecaaf0f2">Let's talk</a>
+  </div>
+
+  <div class="affiliations">
+    <div class="aff-label">Also involved in</div>
+    <div class="aff-grid">
+      <div class="aff-item">
+        <div class="aff-name">Big Teeth<br>Productions</div>
+        <div class="aff-role">Owner & Creative Director</div>
+        <div class="aff-desc">Chicago-based video production studio specializing in documentary-style storytelling for nonprofits, higher education, and purpose-driven organizations.</div>
+        <a class="aff-link" href="https://bigteeth.tv" target="_blank">
+          bigteeth.tv
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+      <div class="aff-item">
+        <div class="aff-name">Big Teeth<br>Small Shorts</div>
+        <div class="aff-role">Festival Director</div>
+        <div class="aff-desc">Annual short film festival celebrating short-form storytelling. Because good things come in small packages — and great things come in really small packages.</div>
+        <a class="aff-link" href="#" target="_blank">
+          btssff.com
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+      <div class="aff-item">
+        <div class="aff-name">Chicago Alliance<br>of Film Festivals</div>
+        <div class="aff-role">Steering Committee</div>
+        <div class="aff-desc">A coalition of Chicago film festivals working together to strengthen the city's film culture and support filmmakers at every level.</div>
+        <a class="aff-link" href="#" target="_blank">
+          chicagofilmfestivals.org
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ PITCH (dynamic) -->
+<div class="page" id="pitch">
+  <div class="pitch-wrap">
+    <div class="pitch-label" id="pitch-label">Selected work</div>
+    <div class="pitch-title" id="pitch-title"></div>
+    <div class="pitch-copy" id="pitch-copy"></div>
+    <div class="pitch-grid work-grid" id="pitch-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ ADMIN -->
+<div class="page" id="admin">
+  <div class="admin-wrap">
+    <div id="admin-login-wall">
+      <div class="admin-login">
+        <div class="admin-login-title">Admin</div>
+        <p>Enter password to access pitch page builder.</p>
+        <input class="form-input" type="password" id="admin-pw" placeholder="Password" style="width:100%" onkeydown="if(event.key==='Enter')checkAdminPw()">
+        <button class="btn-primary" onclick="checkAdminPw()">Enter</button>
+        <div id="admin-pw-err" style="font-size:12px;color:#ff4444;display:none">Incorrect password.</div>
+      </div>
+    </div>
+    <div id="admin-content" style="display:none">
+      <div class="admin-title">Pitch Builder</div>
+      <div class="admin-sub">Create a custom page to send to a specific contact. Generates a JSON file you save to /pitches in your GitHub repo.</div>
+      <div class="admin-form">
+        <div class="form-group">
+          <label class="form-label">Page slug (used in URL)</label>
+          <input class="form-input" id="pitch-slug" placeholder="e.g. nike-brand-film" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9-]/g,'-')">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Page title</label>
+          <input class="form-input" id="pitch-form-title" placeholder="e.g. Selected work for Nike">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Intro copy</label>
+          <textarea class="form-textarea" id="pitch-form-copy" placeholder="A few lines about this pitch or the work you're sharing..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Select samples</label>
+          <div class="sample-checkboxes" id="sample-checkboxes"></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn-primary" onclick="generatePitch()">Generate pitch page</button>
+          <button class="btn-secondary" onclick="clearPitchForm()">Clear</button>
+        </div>
+      </div>
+      <div class="admin-output" id="admin-output">
+        <div class="output-label">Your pitch page is ready</div>
+        <div class="output-url" id="output-url"></div>
+        <div class="output-json" id="output-json"></div>
+        <div class="output-instructions">
+          <strong>To publish:</strong><br><br>
+          1. Copy the JSON above<br>
+          2. Go to your GitHub repo → <code>pitches</code> folder<br>
+          3. Create a new file named <code id="output-filename"></code><br>
+          4. Paste the JSON and commit<br>
+          5. Your pitch page will be live at the URL above within ~30 seconds
+        </div>
+      </div>
+      <div class="admin-pitch-list">
+        <h3>Existing pitch pages</h3>
+        <div id="pitch-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ LIGHTBOX -->
+<div class="lb" id="lb" onclick="lbBgClose(event)">
+  <div class="lb-inner">
+    <div class="lb-vid" id="lb-vid"></div>
+    <div class="lb-meta">
+      <div class="lb-left">
+        <div class="lb-title" id="lb-title"></div>
+        <div class="lb-client" id="lb-client"></div>
+        <div class="lb-role-tags" id="lb-role-tags"></div>
+        <div class="lb-desc" id="lb-desc"></div>
+      </div>
+      <div class="lb-nav">
+        <button class="lb-btn" onclick="lbNav(-1)">&#8592; Prev</button>
+        <button class="lb-btn" onclick="lbNav(1)">Next &#8594;</button>
+        <button class="lb-share" onclick="shareCurrentPiece()">Copy link</button>
+        <button class="lb-close" onclick="closeLb()">&#215; Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="share-toast" id="share-toast">Link copied</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const ALL_WORK = [
+  {
+    id:'creature-of-the-night',
+    t:'"Creature of the Night"',cl:'Short Film',
+    roles:['director'],cat:'film',vid:'1795216473',
+    th:'https://i.vimeocdn.com/video/1795216473-e437e9a3089198d26f8d172ee26a81de1bf087511a1a6c35d086f141ebc9fb7a-d_1920x1080',
+    desc:'Personal short film. Wrote, directed, and edited. Genre exercise — wanted to play with tone and not tip the hand too early.',
+    keyDir:true
+  },
+  {
+    id:'smithfield-eat-what-you-love',
+    t:'Smithfield "Eat What You Love"',cl:'Smithfield',
+    roles:['director'],cat:'comedy',vid:'519151993',
+    th:'https://i.vimeocdn.com/video/1076928137-35de6a83a82cdef0cc22913b2026add235de7c2081f8fc734285413660f1a8c2-d',
+    desc:'Directed this :30 spot for Smithfield. Wanted it to feel like a real family moment — casting and performance-driven.',
+    keyDir:true
+  },
+  {
+    id:'cayman-jack-margarita-day',
+    t:'Cayman Jack Margarita Day',cl:'Cayman Jack',
+    roles:['director'],cat:'comedy',vid:'612197943',
+    th:'https://i.vimeocdn.com/video/612197943-b82fca9af70d8940fd257a2677887c36e6061758a7b0e6bded593f153af4b3fe-d',
+    desc:"Director's cut. The brand wanted a fun social campaign — leaned into the absurdity and let the cast find it."
+  },
+  {
+    id:'orbitz-the-boss',
+    t:'Orbitz "Out of Office Theatre" — The Boss',cl:'Orbitz',
+    roles:['director'],cat:'comedy',vid:'529821133',
+    th:'https://i.vimeocdn.com/video/529821133-73b4691fcdbfd206862c5b7408351f76f494a99e0f50dae8271d3a2f39702af1-d',
+    desc:'Part of a branded comedy series for Orbitz. Cast-driven, improv-friendly — kept the energy loose and the performances real.',
+    keyDir:true
+  },
+  {
+    id:'orbitz-the-yogi',
+    t:'Orbitz "Out of Office Theatre" — The Yogi',cl:'Orbitz',
+    roles:['director'],cat:'comedy',vid:'529822710',
+    th:'https://i.vimeocdn.com/video/529822710-c17999304bd7a31f8de263a3d347848b225d284dc7be1213f00e4f17296c68ef-d',
+    desc:"Second episode in the Orbitz series. Same world, different absurdity. The yogi was the cast's idea — the best ones usually are."
+  },
+  {
+    id:'switchfast-it',
+    t:'Switchfast IT — Social Ad',cl:'Switchfast',
+    roles:['director'],cat:'comedy',vid:'716840158',
+    th:'https://i.vimeocdn.com/video/716840158-20199f7a78d50db16836bc05b48d89be9b3055d8eda6dcdc1fbb9abefb36424e-d',
+    desc:'Small budget, big swing. Made the constraints work for the joke instead of against it.'
+  },
+  {
+    id:'uis-reaching-stellar',
+    t:'UIS "Reaching Stellar"',cl:'Univ. of Illinois Springfield',
+    roles:['director','editor'],cat:'brand',vid:'661637022',
+    th:'https://i.vimeocdn.com/video/661637022-ae8de006cbf548db42dde1772e2540d031d44223f3c9051b99df9dfd4ea90d8b-d_1920x1080',
+    desc:'Documentary-style brand film for UIS. Directed and edited. Found the story in the students, not the institution.',
+    keyDir:true, keyEdit:true
+  },
+  {
+    id:'national-pork-board',
+    t:'National Pork Board: A Rose for Your Bros',cl:'National Pork Board',
+    roles:['director'],cat:'brand',vid:'476357115',
+    th:'https://i.vimeocdn.com/video/476357115-757bcd7de64d3dfbdf2485f0aca816fb63f5958bd399f1a99c05ccd5cf9a3a9d-d_1920x1080',
+    desc:"Social campaign for NPB. The premise was silly, the execution committed. That tension is where comedy lives."
+  },
+  {
+    id:'seattles-best',
+    t:"Seattle's Best Brand Update",cl:"Seattle's Best",
+    roles:['director'],cat:'brand',vid:'517880566',
+    th:'https://i.vimeocdn.com/video/517880566-3292edbc52bf016ef5f69694fa7448a9d94ed63aef95222c5fd0c67e619b90e7-d',
+    desc:"Stop motion brand refresh. Directed and oversaw animation — the brief was to modernize without losing the warmth."
+  },
+  {
+    id:'adams-hands',
+    t:"Adam's Hands",cl:'Short Film',
+    roles:['director','editor'],cat:'film',vid:'1063208330',
+    th:'https://i.vimeocdn.com/video/1063208330-51df3e02188393c3c4af542da2630f14483be835deecc75cc062d117938a7f48-d_1920x1080',
+    desc:'Personal short. Character-driven, minimal dialogue. Directed and edited — every cut had to be earned.',
+    keyEdit:true
+  },
+  {
+    id:'plz-behind-the-label',
+    t:'PLZ "Behind the Label"',cl:'PLZ',
+    roles:['editor'],cat:'brand',vid:'1443203347',
+    th:'https://i.vimeocdn.com/video/1443203347-ae8ec96f612c93f699473f3c22076aefe90371d95621d1f5e391a6651f3eac7d-d',
+    desc:'Documentary-style campaign film. The story was in the interviews — the edit was about finding the spine.',
+    keyEdit:true
+  },
+  {
+    id:'roomit-cwt',
+    t:'RoomIt by CWT',cl:'CWT',
+    roles:['editor'],cat:'brand',vid:'761518566',
+    th:'https://i.vimeocdn.com/video/761518566-c48a3d65e829f1a4cd0e1d8d5fef6c006b6716ecb980b86c05413197df5a2d66-d',
+    desc:"Edited this brand campaign for CWT's hotel booking platform. Multiple shoots, one cohesive story.",
+    keyEdit:true
+  },
+  {
+    id:'rage',
+    t:'Rage',cl:'Short Film',
+    roles:['editor'],cat:'film',vid:'811699740',
+    th:'https://i.vimeocdn.com/video/811699740-6ac10ebf0e3e60ac9a1108b07a5ecb86e5fdefc4d263a65b0b9e6bc05b042dc7-d',
+    desc:'Pacing-driven cut. The director wanted tension to build slowly. Resisted the urge to cut around the discomfort.'
+  },
+  {
+    id:'oak-street-health',
+    t:'Oak Street Health "Spend Time"',cl:'Oak Street Health',
+    roles:['editor'],cat:'commercial',vid:null,th:null,
+    desc:'Edited this TV spot. Emotional, performance-led — the job was to get out of the way and let the moments breathe.'
+  },
+  {
+    id:'unscarred',
+    t:'"Unscarred" Feature Doc Teaser',cl:'Documentary',
+    roles:['editor'],cat:'film',vid:null,th:null,
+    desc:'Cut the teaser for this feature documentary. Had to distill a complex story into 90 seconds without giving away the ending.'
+  },
+  {
+    id:'fox-hounds',
+    t:'Fox & The Hounds Music Video',cl:'Music Video',
+    roles:['editor'],cat:'film',vid:null,th:null,
+    desc:'Performance and narrative intercut — matching the edit rhythm to the song without being literal about it.'
+  },
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let roleFilter = 'all';
+let catFilter = 'all';
+let lbItems = [];
+let lbIdx = 0;
+let currentPage = 'work';
+let currentPitchData = null;
+
+// ── ADMIN PASSWORD ─────────────────────────────────────────────────────────────
+// REPLACE: change 'bigteeth' to your preferred password
+const ADMIN_PW = 'bigteeth';
+
+// ── GRID SIZES ────────────────────────────────────────────────────────────────
+function cardSize(idx, total) {
+  if (idx === 0) return 'card-lg';
+  if (idx === 1 || idx === 2) return 'card-md';
+  const pos = idx % 6;
+  if (pos === 3) return 'card-lg';
+  return 'card-sm';
+}
+
+// ── CARD HTML ─────────────────────────────────────────────────────────────────
+function cardHTML(w, idx, items, context) {
+  const size = context === 'key' ? 'card-sm' : cardSize(idx, items.length);
+  const img = w.th
+    ? `<img src="${w.th}" loading="lazy" alt="${w.t}">`
+    : `<div class="card-ph"><span>Coming soon</span></div>`;
+  const roleTags = w.roles.map(r =>
+    `<span class="ctag${r==='editor'?' edit-tag':''}">${r}</span>`
+  ).join('');
+  return `<div class="card ${size}" onclick="openLb(${idx},${JSON.stringify(items.map(i=>i.id))})">
+    ${img}
+    <div class="alw"><div class="atit">${w.t}</div></div>
+    <div class="cov">
+      <div style="display:flex;gap:5px;margin-bottom:8px">${roleTags}</div>
+      <div class="ctitle">${w.t}</div>
+      <div class="cclient">${w.cl}</div>
+    </div>
+    <div class="pico"><svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg></div>
+    <button class="share-btn" onclick="event.stopPropagation();copyPieceLink('${w.id}')">Copy link</button>
+  </div>`;
+}
+
+// ── RENDER WORK GRID ──────────────────────────────────────────────────────────
+function renderWorkGrid() {
+  const items = ALL_WORK.filter(w => {
+    const roleOk = roleFilter === 'all' || w.roles.includes(roleFilter);
+    const catOk  = catFilter === 'all'  || w.cat === catFilter;
+    return roleOk && catOk;
+  });
+  const el = document.getElementById('work-grid');
+  el.innerHTML = items.length
+    ? items.map((w,i) => cardHTML(w, i, items, 'work')).join('')
+    : '<div class="empty">No pieces match this filter.</div>';
+}
+
+// ── RENDER KEY SAMPLES ────────────────────────────────────────────────────────
+function renderKeyGrids() {
+  const dirItems = ALL_WORK.filter(w => w.keyDir);
+  const editItems = ALL_WORK.filter(w => w.keyEdit);
+  document.getElementById('dir-key-grid').innerHTML =
+    dirItems.map((w,i) => cardHTML(w, i, dirItems, 'key')).join('');
+  document.getElementById('edit-key-grid').innerHTML =
+    editItems.map((w,i) => cardHTML(w, i, editItems, 'key')).join('');
+}
+
+// ── FILTERS ───────────────────────────────────────────────────────────────────
+function setFilter(type, val, btn) {
+  if (type === 'role') {
+    roleFilter = val;
+    document.querySelectorAll('#role-filters .fb').forEach(b => b.classList.remove('on'));
+  } else {
+    catFilter = val;
+    document.querySelectorAll('#cat-filters .fb').forEach(b => b.classList.remove('on'));
+  }
+  btn.classList.add('on');
+  renderWorkGrid();
+}
+
+// ── NAVIGATION ─────────────────────────────────────────────────────────────────
+function goTo(page, skipHash) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a[id]').forEach(a => a.classList.remove('on'));
+  const el = document.getElementById(page);
+  if (!el) return;
+  el.classList.add('active');
+  const navEl = document.getElementById('nav-' + page);
+  if (navEl) navEl.classList.add('on');
+  currentPage = page;
+  window.scrollTo(0, 0);
+  if (!skipHash) {
+    history.pushState(null, '', '#' + page);
+  }
+  if (page === 'work') renderWorkGrid();
+  if (page === 'director' || page === 'editor') renderKeyGrids();
+  if (page === 'admin') initAdmin();
+}
+
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
+function openLb(idx, idList) {
+  lbItems = idList.map(id => ALL_WORK.find(w => w.id === id)).filter(Boolean);
+  lbIdx = idx;
+  renderLb();
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  history.pushState(null, '', '#work/' + lbItems[lbIdx].id);
+}
+
+function renderLb() {
+  const w = lbItems[lbIdx];
+  const vd = document.getElementById('lb-vid');
+  vd.innerHTML = w.vid
+    ? `<iframe src="https://player.vimeo.com/video/${w.vid}?autoplay=1&title=0&byline=0&portrait=0&color=FF1FCC" allow="autoplay; fullscreen" allowfullscreen></iframe>`
+    : `<div class="lb-ph"><span class="lb-ph-txt">Video coming soon</span></div>`;
+  document.getElementById('lb-title').textContent = w.t;
+  document.getElementById('lb-client').textContent = w.cl;
+  const roleTags = w.roles.map(r =>
+    `<span class="lb-role-tag ${r==='editor'?'edit':'dir'}">${r}</span>`
+  ).join('') + `<span class="lb-role-tag cat">${w.cat}</span>`;
+  document.getElementById('lb-role-tags').innerHTML = roleTags;
+  document.getElementById('lb-desc').textContent = w.desc;
+  history.replaceState(null, '', '#work/' + w.id);
+}
+
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+  document.getElementById('lb-vid').innerHTML = '';
+  document.body.style.overflow = '';
+  history.replaceState(null, '', '#' + currentPage);
+}
+
+function lbBgClose(e) {
+  if (e.target === document.getElementById('lb')) closeLb();
+}
+
+function lbNav(dir) {
+  lbIdx = (lbIdx + dir + lbItems.length) % lbItems.length;
+  renderLb();
+}
+
+function shareCurrentPiece() {
+  copyPieceLink(lbItems[lbIdx].id);
+}
+
+function copyPieceLink(id) {
+  const url = window.location.origin + window.location.pathname + '#work/' + id;
+  navigator.clipboard.writeText(url).then(() => {
+    const t = document.getElementById('share-toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+});
+
+// ── HASH ROUTING ──────────────────────────────────────────────────────────────
+function handleHash() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) { goTo('work', true); return; }
+
+  if (hash.startsWith('work/')) {
+    const id = hash.slice(5);
+    const piece = ALL_WORK.find(w => w.id === id);
+    if (piece) {
+      goTo('work', true);
+      renderWorkGrid();
+      setTimeout(() => {
+        lbItems = ALL_WORK;
+        lbIdx = ALL_WORK.findIndex(w => w.id === id);
+        renderLb();
+        document.getElementById('lb').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }, 100);
+    }
+    return;
+  }
+
+  if (hash.startsWith('pitch/')) {
+    const slug = hash.slice(6);
+    loadPitchPage(slug);
+    return;
+  }
+
+  const pages = ['work','director','editor','about','admin'];
+  if (pages.includes(hash)) {
+    goTo(hash, true);
+  } else {
+    goTo('work', true);
+  }
+}
+
+window.addEventListener('popstate', handleHash);
+
+// ── PITCH PAGES ───────────────────────────────────────────────────────────────
+async function loadPitchPage(slug) {
+  try {
+    const res = await fetch(`pitches/${slug}.json`);
+    if (!res.ok) throw new Error('Not found');
+    const data = await res.json();
+    renderPitchPage(data);
+  } catch(e) {
+    goTo('work', true);
+  }
+}
+
+function renderPitchPage(data) {
+  document.getElementById('pitch-label').textContent = 'Selected work for';
+  document.getElementById('pitch-title').textContent = data.title;
+  document.getElementById('pitch-copy').textContent = data.copy;
+  const items = data.pieces.map(id => ALL_WORK.find(w => w.id === id)).filter(Boolean);
+  document.getElementById('pitch-grid').innerHTML =
+    items.map((w,i) => cardHTML(w, i, items, 'key')).join('');
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('pitch').classList.add('active');
+  document.querySelectorAll('.nav-links a[id]').forEach(a => a.classList.remove('on'));
+  window.scrollTo(0,0);
+}
+
+// ── ADMIN ─────────────────────────────────────────────────────────────────────
+function checkAdminPw() {
+  const pw = document.getElementById('admin-pw').value;
+  if (pw === ADMIN_PW) {
+    document.getElementById('admin-login-wall').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('admin-pw-err').style.display = 'block';
+  }
+}
+
+function initAdmin() {
+  // Build sample checkboxes
+  const cb = document.getElementById('sample-checkboxes');
+  if (!cb.children.length) {
+    cb.innerHTML = ALL_WORK.map(w => `
+      <label class="sample-cb">
+        <input type="checkbox" value="${w.id}">
+        <div>
+          <div class="sample-cb-title">${w.t}</div>
+          <div class="sample-cb-meta">${w.cl} · ${w.roles.join(' / ')} · ${w.cat}</div>
+        </div>
+      </label>
+    `).join('');
+  }
+  // Load existing pitches from localStorage as reference list
+  renderPitchList();
+}
+
+function generatePitch() {
+  const slug = document.getElementById('pitch-slug').value.trim();
+  const title = document.getElementById('pitch-form-title').value.trim();
+  const copy = document.getElementById('pitch-form-copy').value.trim();
+  const selected = Array.from(document.querySelectorAll('#sample-checkboxes input:checked')).map(i => i.value);
+  if (!slug || !title || !selected.length) {
+    alert('Please fill in slug, title, and select at least one sample.');
+    return;
+  }
+  const data = { slug, title, copy, pieces: selected, created: new Date().toISOString() };
+  const json = JSON.stringify(data, null, 2);
+  const filename = slug + '.json';
+  const url = window.location.origin + window.location.pathname + '#pitch/' + slug;
+
+  document.getElementById('output-url').textContent = url;
+  document.getElementById('output-json').textContent = json;
+  document.getElementById('output-filename').textContent = filename;
+  document.getElementById('admin-output').classList.add('show');
+
+  // Save to localStorage as a reference log
+  const log = JSON.parse(localStorage.getItem('gj-pitches') || '[]');
+  const exists = log.findIndex(p => p.slug === slug);
+  if (exists > -1) log[exists] = data; else log.push(data);
+  localStorage.setItem('gj-pitches', JSON.stringify(log));
+  renderPitchList();
+}
+
+function renderPitchList() {
+  const log = JSON.parse(localStorage.getItem('gj-pitches') || '[]');
+  const el = document.getElementById('pitch-list');
+  if (!log.length) {
+    el.innerHTML = '<p style="font-size:13px;color:var(--fg3)">No pitch pages created yet.</p>';
+    return;
+  }
+  el.innerHTML = log.map(p => `
+    <div class="pitch-item">
+      <div>
+        <div class="pitch-item-title">${p.title}</div>
+        <div class="pitch-item-url">#pitch/${p.slug}</div>
+      </div>
+      <button class="pitch-item-del" onclick="deletePitch('${p.slug}')">Delete log</button>
+    </div>
+  `).join('');
+}
+
+function deletePitch(slug) {
+  const log = JSON.parse(localStorage.getItem('gj-pitches') || '[]').filter(p => p.slug !== slug);
+  localStorage.setItem('gj-pitches', JSON.stringify(log));
+  renderPitchList();
+}
+
+function clearPitchForm() {
+  document.getElementById('pitch-slug').value = '';
+  document.getElementById('pitch-form-title').value = '';
+  document.getElementById('pitch-form-copy').value = '';
+  document.querySelectorAll('#sample-checkboxes input').forEach(i => i.checked = false);
+  document.getElementById('admin-output').classList.remove('show');
+}
+
+// ── GRAIN ─────────────────────────────────────────────────────────────────────
+(function(){
+  const c = document.getElementById('grain');
+  let w = 0, h = 0;
+  function resize() {
+    w = c.width = window.innerWidth;
+    h = c.height = window.innerHeight;
+    draw();
+  }
+  function draw() {
+    const ctx = c.getContext('2d');
+    const img = ctx.createImageData(w, h);
+    const d = img.data;
+    let r = 54321;
+    for (let i = 0; i < d.length; i += 4) {
+      r ^= r << 13; r ^= r >> 17; r ^= r << 5; r = r >>> 0;
+      const v = r % 255;
+      const a = v > 162 ? Math.floor(((v - 162) / 93) * 20) : 0;
+      d[i] = v; d[i+1] = v; d[i+2] = v; d[i+3] = a;
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+})();
+
+// ── INIT ─────────────────────
+handleHash();
+</script>
+</body>
+</html>
