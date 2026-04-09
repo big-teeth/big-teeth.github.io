@@ -806,6 +806,7 @@ nav.scrolled {
         <button class="fb" onclick="setF('cat','film',this)">Film</button>
         <button class="fb" onclick="setF('cat','comedy',this)">Comedy</button>
         <button class="fb" onclick="setF('cat','commercial',this)">Commercial</button>
+        <button class="fb" onclick="setF('cat','documentary',this)">Documentary</button>
       </div>
     </div>
     <div class="grid-wrap">
@@ -828,7 +829,7 @@ nav.scrolled {
       <div class="pos-body">
         <div class="pos-stats">
           <div><div class="pos-stat-lbl">Approach</div><div class="pos-stat-val">Collaborative<br>& Real</div></div>
-          <div><div class="pos-stat-lbl">Range</div><div class="pos-stat-val">Brand Films, Docs, Shorts, Spots</div></div>
+          <div><div class="pos-stat-lbl">Style</div><div class="pos-stat-val">Finding the<br>true moments</div></div>
           <div><div class="pos-stat-lbl">Based in</div><div class="pos-stat-val">Chicago, IL</div></div>
         </div>
         <div>
@@ -1048,13 +1049,13 @@ const W = [
     t:'Creature of the Night', cl:'Short Film',
     roles:['director','editor'], cat:['film','comedy'], vid:'910968321',
     th:'https://i.vimeocdn.com/video/1795216473-e437e9a3089198d26f8d172ee26a81de1bf087511a1a6c35d086f141ebc9fb7a-d_1920x1080',
-    desc:"An original short film loosely inspired by Edward Hopper's famous painting Nighthawks. Some of us are morning people... some are creatures of the night. When the rest of you go to bed that's when the world of possibilities opens up.",
+    desc:'An original short film loosely inspired by Edward Hopper\'s famous painting \"Nighthawks.\" Some of us are morning people... some are creatures of the night. When the rest of you go to bed that\'s when the world of possibilities opens up.',
     keyDir:true, keyEdit:false },
   { id:'smithfield-eat-what-you-love',
     t:'Smithfield Eat What You Love', cl:'Smithfield',
     roles:['director'], cat:['comedy','commercial','brand'], vid:'520037287',
     th:'https://i.vimeocdn.com/video/1076928137-35de6a83a82cdef0cc22913b2026add235de7c2081f8fc734285413660f1a8c2-d',
-    desc:'A spot I directed for Smithfield brand to showcase the variety of meat products they sell and a call to arms to the unabashed meat lovers of the world. This is the flagship spot - the campaign included social edits of a variety of aspect ratios and lengths as well. Agency: The Escape Pod / Production Company: Gravity Well',
+    desc:'A spot I directed for Smithfield brand to showcase the variety of meat products they sell and a call to arms to the unabashed meat lovers of the world. This is the flagship spot and the campaign included social edits of a variety of aspect ratios and lengths as well. Agency: The Escape Pod Production Company: Gravity Well Client: Smithfield Full list of credits upon request.',
     keyDir:true, keyEdit:false },
   { id:'orbitz-the-boss',
     t:'Orbitz Out of Office Theatre - The Boss', cl:'Orbitz',
@@ -1066,10 +1067,10 @@ const W = [
     t:'University Fundraising Campaign Film', cl:'Univ. of Illinois Springfield',
     roles:['director','editor'], cat:['brand'], vid:'238832212',
     th:'https://i.vimeocdn.com/video/661637022-ae8de006cbf548db42dde1772e2540d031d44223f3c9051b99df9dfd4ea90d8b-d_1920x1080',
-    desc:"This film was developed as part of UIS new fundraising effort. We took their overall concept of reaching stellar and brought it to life visually with beautiful cinematography shot in a naturalistic documentary style.",
+    desc:'This film was developed as part of UIS\' new fundraising effort. We took their overall concept of \"reaching stellar\" and brought it to life visually with beautiful cinematography shot in a naturalistic documentary style. We wanted to show familiar scenes and people but give it a dramatic flair that offers a sense of urgency and purpose to what goes on at the school and for alumni once they leave.',
     keyDir:false, keyEdit:true },
   { id:'adams-hands',
-    t:"Adam's Hands", cl:'Short Film',
+    t:'Adam\'s Hands', cl:'Short Film',
     roles:['director','editor'], cat:['film','comedy'], vid:'513495732',
     th:'https://i.vimeocdn.com/video/1063208330-51df3e02188393c3c4af542da2630f14483be835deecc75cc062d117938a7f48-d_1920x1080',
     desc:'Original short film that took an absurd concept and layered it in a down to earth performance where the comedy was found in the drama.',
@@ -1078,13 +1079,13 @@ const W = [
     t:'Behind the Label Brand Film', cl:'PLZ',
     roles:['editor'], cat:['brand'], vid:'638842449',
     th:'https://i.vimeocdn.com/video/1443203347-ae8ec96f612c93f699473f3c22076aefe90371d95621d1f5e391a6651f3eac7d-d',
-    desc:"This project was about giving a huge company a pulse and humanity by introducing the many people that play a role in PLZ's success. By shooting footage and recording audio at 18 different locations we created a unified voice along with a fun fast-moving visual style that brought everyone together behind the label.",
+    desc:'This project was about giving a huge company a pulse and humanity by introducing the many people that play a role in PLZ\'s success. By shooting footage and recording audio at 18 different locations we created a unified voice along with a fun, fast-moving visual style that brought everyone together \"behind the label.”',
     keyDir:false, keyEdit:true },
   { id:'roomit-cwt',
     t:'Travel Company Brand Film', cl:'Roomit by CWT',
     roles:['editor'], cat:['brand','commercial'], vid:'319050460',
     th:'https://i.vimeocdn.com/video/761518566-c48a3d65e829f1a4cd0e1d8d5fef6c006b6716ecb980b86c05413197df5a2d66-d',
-    desc:'A brand spot to introduce RoomIt and extol its benefits and features in a fun travel-inspired direction. The edit had to be fast-paced and feel atypical of the usual type of videos in the travel industry.',
+    desc:'A brand spot to introduce RoomIt and extol it\'s benefits and features in a fun, travel-inspired direction. The edit had to be fast-paced and feel atypical of the usual type of videos in the travel industry.',
     keyDir:false, keyEdit:true },
   { id:'rage',
     t:'Rage', cl:'Short Film',
@@ -1096,20 +1097,26 @@ const W = [
     t:'Healthcare TV Spot', cl:'Oak Street Health',
     roles:['director','editor'], cat:['commercial'], vid:'239022704',
     th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/Oak-St-Health.jpg',
-    desc:'I edited this spot that was meant to show seniors in a more upbeat and youthful light through a fast but not nauseating series of cuts and split screens set to a fun upbeat music track that would make this spot stand out on TV next to other health care related ads.',
+    desc:'I edited this spot that was meant to show seniors in a more upbeat and youthful light which we did through a fast (but not nauseating) series of cuts and split screens set to a fun and upbeat music track that would make this spot stand out on TV next to other health care related ads.',
     keyDir:true, keyEdit:false },
   { id:'unscarred',
     t:'Unscarred Trailer', cl:'Big Teeth Productions',
     roles:['editor'], cat:['film'], vid:'1078819166',
     th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/unscarred-thumb.png',
-    desc:'Teaser trailer for the upcoming feature documentary Unscarred. Had to distill a complex story with many characters and themes into something provocative enough without giving everything away.',
+    desc:'This is a teaser trailer for the upcoming feature documentary, Unscarred. I had to distill a complex story with many characters and themes into something provocative enough without giving everything away.',
     keyDir:false, keyEdit:true },
   { id:'fox-hounds',
     t:'How the Other Half Lives Music Video', cl:'Fox & The Hounds',
     roles:['director','editor'], cat:['film'], vid:'165940794',
     th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/Fox%20Hounds%20Thumb.png',
-    desc:"The official music video for The Fox & The Hounds single How The Other Half Live off their Peach Keen album released in 2015. Video produced by Big Teeth Productions.",
+    desc:'The official music video for The Fox & The Hounds single \"How The Other Half Live\" off their \"Peach Keen\" album released in 2015. Video produced by Big Teeth Productions.',
     keyDir:false, keyEdit:false },
+  { id:'music-inc-chicago',
+    t:'Why Does Music Matter', cl:'MUSIC Inc.',
+    roles:['director','editor'], cat:['brand','documentary'], vid:'274927191',
+    th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/MUSIC%20Inc%20Thumb-10.jpg',
+    desc:'I had the pleasure of working with MUSIC Inc. (Music in Urban Schools Inspiring Change), on a brand awareness project to assist with fundraising efforts. Their mission is to empower underserved youth through world-class music education, while building character, promoting academic excellence, and fostering community. To blend the seriousness of the need with the joy of the outcomes we edited the film to start slowly and build to a more powerful, quick-cut happy experience that the kids and their families have when they have access to arts education. Produced by Big Teeth Productions.',
+    keyDir:true, keyEdit:false },
 ];
 
 // ── STATE ─────────────────────────────────────────────────────
