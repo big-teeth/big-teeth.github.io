@@ -260,13 +260,14 @@ nav.scrolled {
 .card-play {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 52px; height: 52px;
-  border: 1.5px solid rgba(242,237,230,0.18);
+  width: 56px; height: 56px;
+  border: 1.5px solid rgba(242,237,230,0.25);
+  border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.2s, border-color 0.2s;
+  opacity: 0; transition: opacity 0.2s, border-color 0.2s, background 0.2s;
   pointer-events: none;
 }
-.card:hover .card-play { opacity: 1; border-color: rgba(224,123,32,0.7); }
+.card:hover .card-play { opacity: 1; border-color: var(--ac); background: rgba(224,123,32,0.1); }
 .card-play svg { width: 13px; height: 13px; fill: var(--white); margin-left: 3px; }
 /* card-share lives in lightbox only */
 
@@ -387,7 +388,7 @@ nav.scrolled {
 .about-wrap { padding: 80px 48px 0; }
 .about-top {
   display: grid; grid-template-columns: 1fr 360px;
-  gap: 64px; align-items: start;
+  gap: 64px; align-items: stretch;
   padding-bottom: 72px;
   border-bottom: 1px solid var(--line);
 }
@@ -411,7 +412,7 @@ nav.scrolled {
 .about-body p:last-child { margin-bottom: 0; }
 .about-photo {
   position: relative;
-  height: 320px;
+  min-height: 320px;
   background: #141414; overflow: hidden;
 }
 .about-photo-ph {
@@ -574,13 +575,22 @@ nav.scrolled {
   font-size: 10px; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--ac); margin-bottom: 10px;
 }
-.lb-tags { display: flex; gap: 6px; margin-bottom: 12px; }
+.lb-tags {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
 .lb-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 3px 7px; border: 1px solid var(--ac); color: var(--ac);
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ac);
 }
-.lb-tag.edit { border-color: var(--dimmer); color: var(--dim); }
+.lb-tag.edit { color: var(--dim); }
+.lb-tag-sep {
+  width: 20px; height: 1px;
+  background: rgba(224,123,32,0.3);
+  display: inline-block;
+}
 .lb-desc { font-size: 13px; line-height: 1.8; color: var(--body); max-width: 560px; }
 .lb-nav { display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
 .lb-btn {
@@ -1066,19 +1076,19 @@ const W = [
   { id:'oak-street-health',
     t:'Healthcare TV Spot', cl:'Oak Street Health',
     roles:['director','editor'], cat:'commercial', vid:'239022704',
-    th:null,
+    th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/Oak-St-Health.jpg',
     desc:'I edited this spot that was meant to show seniors in a more upbeat and youthful light through a fast but not nauseating series of cuts and split screens set to a fun upbeat music track that would make this spot stand out on TV next to other health care related ads.',
     keyDir:true },
   { id:'unscarred',
     t:'Unscarred Trailer', cl:'Big Teeth Productions',
     roles:['editor'], cat:'film', vid:'1078819166',
-    th:null,
+    th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/unscarred-thumb.png',
     desc:'Teaser trailer for the upcoming feature documentary Unscarred. Had to distill a complex story with many characters and themes into something provocative enough without giving everything away.',
     keyEdit:true },
   { id:'fox-hounds',
     t:'How the Other Half Lives Music Video', cl:'Fox & The Hounds',
     roles:['director','editor'], cat:'film', vid:'165940794',
-    th:null,
+    th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/Fox%20Hounds%20Thumb.png',
     desc:"Official music video for The Fox & The Hounds single How The Other Half Live off their Peach Keen album released in 2015. Video produced by Big Teeth Productions." },
 ];
 
@@ -1242,9 +1252,12 @@ function renderLb() {
   }
   document.getElementById('lb-title').textContent  = w.t;
   document.getElementById('lb-client').textContent = w.cl;
+  const tagParts = w.roles.map((r,i) => {
+    const sep = i < w.roles.length - 1 ? '<span class="lb-tag-sep"></span>' : '';
+    return '<span class="lb-tag">' + r + '</span>' + sep;
+  }).join('');
   document.getElementById('lb-tags').innerHTML =
-    w.roles.map(r => `<span class="lb-tag${r==='editor'?' edit':''}">${r}</span>`).join('') +
-    `<span class="lb-tag edit">${w.cat}</span>`;
+    tagParts + '<span class="lb-tag-sep"></span><span class="lb-tag edit">' + w.cat + '</span>';
   document.getElementById('lb-desc').textContent = w.desc;
   history.replaceState(null, '', '#work/' + w.id);
 }
