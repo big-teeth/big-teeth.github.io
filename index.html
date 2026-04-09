@@ -708,6 +708,31 @@ nav.scrolled {
   .nav-links { gap: 12px; }
 }
 
+
+/* CONTACT STRIP — bottom of work/director/editor pages */
+.contact-strip {
+  padding: 40px 48px;
+  border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.contact-strip-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--dimmer);
+}
+.contact-strip-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; letter-spacing: 0.08em;
+  color: var(--white); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--ac); padding-bottom: 3px;
+  transition: color 0.2s;
+}
+.contact-strip-link:hover { color: var(--ac); }
+.contact-strip-link svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+@media (max-width: 768px) {
+  .contact-strip { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+}
 /* Mobile legibility — bump dim DM Mono text to readable levels */
 @media (max-width: 768px) {
   :root {
@@ -814,6 +839,14 @@ nav.scrolled {
     </div>
   </div>
 
+  <div class="contact-strip">
+    <span class="contact-strip-label">Got a project?</span>
+    <a class="contact-strip-link" id="work-contact-link">
+      <!--email_off-->gregg@bigteeth.tv<!--/email_off-->
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════ DIRECTOR PAGE -->
@@ -846,6 +879,15 @@ nav.scrolled {
     <div class="key-lbl">Selected directing work</div>
     <div class="key-grid work-grid" id="dir-key-grid"></div>
   </div>
+
+  <div class="contact-strip">
+    <span class="contact-strip-label">Want to talk directing?</span>
+    <a class="contact-strip-link" id="dir-contact-link">
+      <!--email_off-->gregg@bigteeth.tv<!--/email_off-->
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════ EDITOR PAGE -->
@@ -878,6 +920,15 @@ nav.scrolled {
     <div class="key-lbl">Selected editing work</div>
     <div class="key-grid work-grid" id="edit-key-grid"></div>
   </div>
+
+  <div class="contact-strip">
+    <span class="contact-strip-label">Need an editor?</span>
+    <a class="contact-strip-link" id="edit-contact-link">
+      <!--email_off-->gregg@bigteeth.tv<!--/email_off-->
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
 </div>
 
 <!-- ══════════════════════════════════════ ABOUT PAGE -->
@@ -948,8 +999,7 @@ nav.scrolled {
     <div class="contact-ghost">Talk</div>
     <div class="contact-num">03 - Let's work together</div>
     <div class="contact-hl">Got a project?<br>Let's talk.</div>
-    <a class="contact-email" id="contact-email-link">
-      <span class="__cf_email__" data-cfemail="a0c7d2c5c7c7e0c2c9c7d4c5c5d4c88ed4d6">[email&#160;protected]</span>
+    <a class="contact-email" id="contact-email-link"><!--email_off-->gregg@bigteeth.tv<!--/email_off-->
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -1112,7 +1162,7 @@ const W = [
     desc:'The official music video for The Fox & The Hounds single \"How The Other Half Live\" off their \"Peach Keen\" album released in 2015. Video produced by Big Teeth Productions.',
     keyDir:false, keyEdit:false },
   { id:'music-inc-chicago',
-    t:'Why Does Music Matter Doc', cl:'MUSIC Inc.',
+    t:'Why Does Music Matter', cl:'MUSIC Inc.',
     roles:['director','editor'], cat:['brand','documentary'], vid:'274927191',
     th:'https://raw.githubusercontent.com/big-teeth/big-teeth.github.io/main/images/MUSIC%20Inc%20Thumb-10.jpg',
     desc:'I had the pleasure of working with MUSIC Inc. (Music in Urban Schools Inspiring Change), on a brand awareness project to assist with fundraising efforts. Their mission is to empower underserved youth through world-class music education, while building character, promoting academic excellence, and fostering community. To blend the seriousness of the need with the joy of the outcomes we edited the film to start slowly and build to a more powerful, quick-cut happy experience that the kids and their families have when they have access to arts education. Produced by Big Teeth Productions.',
@@ -1437,16 +1487,18 @@ window.addEventListener('scroll', () => {
 });
 
 
-// ── EMAIL LINKS (Cloudflare-safe) ─────────────────────────────
+// ── EMAIL LINKS ────────────────────────────────────────────────
 (function() {
-  var u = 'gregg';
-  var d = 'bigteeth.tv';
-  var e = u + '@' + d;
-  var m = 'mailto:' + e;
+  var e = ['gregg','bigteeth.tv'].join('@');
+  var m = 'mai' + 'lto:' + e;
   var nav = document.getElementById('nav-contact-link');
-  if (nav) { nav.href = m; }
+  if (nav) nav.href = m;
   var contact = document.getElementById('contact-email-link');
-  if (contact) { contact.href = m; contact.childNodes[0].textContent = e; }
+  if (contact) contact.href = m;
+  // Also wire all contact-strip links
+  document.querySelectorAll('.contact-strip-link, #work-contact-link, #dir-contact-link, #edit-contact-link').forEach(function(el) {
+    el.href = m;
+  });
 })();
 
 // ── INIT ──────────────────────────────────────────────────────
