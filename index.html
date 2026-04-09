@@ -87,10 +87,39 @@ nav{
   position:relative;z-index:1;
 }
 
+/* ROLE CTA BLOCKS */
+.role-ctas{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3px;border-bottom:1px solid var(--line);
+}
+.role-cta{
+  background:#111;padding:40px 48px;
+  cursor:pointer;transition:background 0.2s;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:140px;position:relative;
+}
+.role-cta:hover{background:#161616}
+.role-cta-label{
+  font-size:10px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ac);margin-bottom:10px;
+}
+.role-cta-title{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(28px,4vw,48px);
+  line-height:0.9;letter-spacing:0.02em;
+  color:var(--fg);
+}
+.role-cta-arrow{
+  position:absolute;bottom:32px;right:40px;
+  color:var(--fg3);transition:color 0.2s,transform 0.2s;
+}
+.role-cta-arrow svg{width:22px;height:22px}
+.role-cta:hover .role-cta-arrow{color:var(--ac);transform:translateX(4px)}
+
 /* FILTER BAR */
 .fbar{
   display:flex;align-items:center;flex-wrap:wrap;gap:0;
-  padding:14px 48px 0;
+  padding:0 48px;
   border-bottom:1px solid var(--line);
 }
 .fg-grp{display:flex;flex-wrap:wrap}
@@ -127,10 +156,10 @@ nav{
   cursor:pointer;background:var(--card);
   aspect-ratio:16/9;
 }
-.card-sm{grid-column:span 4}
+.card-sm{grid-column:span 6}
 .card-md{grid-column:span 6}
-.card-lg{grid-column:span 8}
-.card-xl{grid-column:span 12}
+.card-lg{grid-column:span 6}
+.card-xl{grid-column:span 6}
 
 .card img{
   width:100%;height:100%;object-fit:cover;
@@ -282,13 +311,13 @@ nav{
 .pos-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
 
 /* KEY SAMPLES */
-.key-samples{padding:48px 48px 0;border-bottom:1px solid var(--line)}
+.key-samples{padding:40px 48px 0;border-bottom:1px solid var(--line)}
 .ks-label{
   font-size:10px;font-weight:500;letter-spacing:0.2em;
   text-transform:uppercase;color:var(--fg3);margin-bottom:20px;
 }
 .ks-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(4,1fr);
   gap:3px;margin-bottom:3px;
 }
 
@@ -687,7 +716,7 @@ nav{
     <li><a id="nav-director" onclick="goTo('director')">Director</a></li>
     <li><a id="nav-editor" onclick="goTo('editor')">Editor</a></li>
     <li><a id="nav-about" onclick="goTo('about')">About</a></li>
-    <li><a class="ac" href="mailto:gregg@bigteeth.tv">Contact</a></li>
+    <li><a class="ac" href="/cdn-cgi/l/email-protection#1b7c697e7c7c5b79727c6f7e7e6f73356f6d">Contact</a></li>
   </ul>
 </nav>
 
@@ -699,6 +728,25 @@ nav{
     <div class="work-title">Gregg Jaffe.<br>Director & Editor.</div>
     <p class="work-sub">20+ years telling stories on screen. Browse everything below or use the filters to find what you need.</p>
   </div>
+
+  <!-- Director / Editor CTA blocks -->
+  <div class="role-ctas">
+    <div class="role-cta" onclick="goTo('director')">
+      <div class="role-cta-label">Director</div>
+      <div class="role-cta-title">Character first.</div>
+      <div class="role-cta-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+    <div class="role-cta" onclick="goTo('editor')">
+      <div class="role-cta-label">Editor</div>
+      <div class="role-cta-title">Art and science.</div>
+      <div class="role-cta-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+  </div>
+
   <div class="fbar">
     <div class="fg-grp" id="role-filters">
       <button class="fb on" onclick="setFilter('role','all',this)">All</button>
@@ -814,7 +862,7 @@ nav{
         <p>If all that has intrigued you enough to want to know more, or better yet hire me — good for me, and better for you.</p>
       </div>
     </div>
-    <a class="cta-btn" href="mailto:gregg@bigteeth.tv">Let's talk</a>
+    <a class="cta-btn" href="/cdn-cgi/l/email-protection#84e3f6e1e3e3c4e6ede3f0e1e1f0ecaaf0f2">Let's talk</a>
   </div>
 
   <div class="affiliations">
@@ -942,7 +990,7 @@ nav{
 
 <div class="share-toast" id="share-toast">Link copied</div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── DATA ─────────────────────────────────────────────────────────────────────
 const ALL_WORK = [
   {
@@ -1401,8 +1449,4 @@ function clearPitchForm() {
   resize();
 })();
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-handleHash();
-</script>
-</body>
-</html>
+// ── INIT ─────────────────────
